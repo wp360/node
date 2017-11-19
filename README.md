@@ -1,23 +1,23 @@
 ## 操作步骤：
 1. 安装
-`npm init`  生成package.json
+```js
+npm init  //生成package.json
 
-`npm i --save express`  安装express
+npm i --save express  //安装express
 
-`npm i --save mongoose` 安装mongoose
+npm i --save mongoose //安装mongoose
 
-`npm i --save-dev babel-cli babel-preset-es2015 babel-preset-stage-0`
+npm i --save-dev babel-cli babel-preset-es2015 babel-preset-stage-0
 
-`npm i --save body-parser`
-
+npm i --save body-parser
+```
 2. babel的使用
 [中文文档](https://babeljs.cn/docs/usage/cli/)
 
 3. mongodb的使用
 首先，安装。然后开启 `mongo`，项目文件夹下新建 `mkdir mongodata`（数据文件夹）；再者，`mongod --bdpath=mongodata/`
 ### 命令行下运行 MongoDB 服务器
-> 为了从命令提示符下运行 MongoDB 服务器，你必须从 MongoDB 目录的 bin 目录中执行 mongod.exe 文件。
-`当前文件夹>mongod --dbpath K:\MongoDB\mongodb\data\db`
+> 为了从命令提示符下运行 MongoDB 服务器，你必须从 MongoDB 目录的 bin 目录中执行 mongod.exe 文件。`当前文件夹>mongod --dbpath K:\MongoDB\mongodb\data\db`
 ### mongoose的连接
 models > crmModel.js > 建立Schema
 
@@ -137,3 +137,15 @@ git push
 
 git push --set-upstream origin crm
 ```
+## github添加、删除远程仓库
+git remote用于管理远程仓库
+
+git remote 不带参数时可以参看远程仓库名称
+
+git remote -v 可以查看远程仓库名称和网址
+
+git remote add  仓库名  仓库地址  添加远程仓库，同时设置远程仓库的名字，一般仓库名称是origin，当然你也可以写成其他的名字
+
+git remote rm  origin  删除名字为origin的远程仓库
+
+[github 创建远程分支以及远程分支无法删除的问题解决](http://blog.csdn.net/u014182411/article/details/74011901)
