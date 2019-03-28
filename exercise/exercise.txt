@@ -1,0 +1,15 @@
+mongoimport --db mongo-exercises --collection courses --drop --file exercise-data.json --jsonArray
+
+mongo -h mongodb://admin:admin123@ds125616.mlab.com:25616
+
+mongoimport --db mongo-demo --collection courses --drop --file ./exercise/exercise-data.json --jsonArray
+
+mongo ds125616.mlab.com:25616/mongo-demo -u admin -p admin123
+mongoimport --collection courses --drop --file ./exercise/exercise-data.json --jsonArray
+
+db.courses.insert(./exercise/exercise-data.json)
+
+mongoimport -h mongodb://admin:admin123@ds125616.mlab.com:25616 --db mongo-demo --collection courses --drop --file ./exercise/exercise-data.json --jsonArray
+
+/*正确*/
+mongoimport -h ds125616.mlab.com --port 25616 -d mongo-demo -c courses -u admin -p admin123 --file ./exercise/exercise-data.json --jsonArray
