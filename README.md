@@ -40,3 +40,4 @@ mongodb+srv://todoAppUser:<password>@cluster0-nzih8.mongodb.net/test?retryWrites
 数据库名称 TodoApp
 文档名称   items
 ```
+7. 查询数据库
