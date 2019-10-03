@@ -1,11 +1,22 @@
-let express = require('express')
+let express = require("express")
+let mongodb = require("mongodb")
 let app = express()
+let db
+
+let connectionString = "mongodb+srv://todoAppUser:admin123@cluster0-nzih8.mongodb.net/TodoApp?retryWrites=true&w=majority"
+mongodb.connect(connectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }, function (err, client) {
+  db = client.db()
+  app.listen(3000)
+})
 
 // express.urlencoded(options)
 // https://cloud.tencent.com/developer/section/1489347#stage-100050793
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', function(req,res) {
+app.get("/", function(req,res) {
   // res.send("Hello,welcome to our app.")
   res.send(`
     <!DOCTYPE html>
@@ -60,10 +71,20 @@ app.get('/', function(req,res) {
   `)
 })
 
-app.post('/create-item', function(req,res) {
+/*
+app.post("/create-item", function(req,res) {
   console.log("make this dynamic in a minute from now")
   console.log(req.body.item)
   res.send("Thanks for submitting the form.")
 })
+*/
 
-app.listen(3000)
+app.post('/create-item', function (req, res) {
+  db.collection('items').insertOne({
+    text: req.body.item
+  }, function () {
+    res.send("Thanks for submitting the form.")
+  })
+})
+
+// app.listen(3000)
